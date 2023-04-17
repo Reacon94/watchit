@@ -27,52 +27,22 @@
     transition: transform 0.5s ease-in-out;
 }
 
-.nextbtn{
-    position: absolute;
-    right: 40px;
-    bottom: -40px;
-    z-index: 20;
-    color: white;
-    background-color: rgba(15, 16, 20, 0.5);
-    border-radius: 50%;
+.nextbtn, .nextbtn1{
+    background-color: rgba(0, 0, 0, 0.9);
+    
 }
 
-.prevbtn{
-    position: absolute;
-    left: 20px;
-    bottom: -40px;
-    z-index: 20;
+.prevbtn, .prevbtn1{
     background-color: rgba(15, 16, 20, 0.5);
-    border-radius: 50%;
 }
 
 .prevbtn:hover, .prevbtn1:hover{
-    transform: scale(1.2);
+    background-color: rgba(62, 73, 68, 0.9)
 }
 
 .nextbtn:hover, .nextbtn1:hover {
-    transform: scale(1.2);
+    background-color: rgba(62, 73, 68, 0.9)
 }
-
-.nextbtn1{
-    position:absolute;
-    right: 40px;
-    bottom: -425px;
-    z-index: 20;
-    background-color: rgba(15, 16, 20, 0.5);
-    border-radius: 50%;
-}
-
-.prevbtn1{
-    position: absolute;
-    left: 20px;
-    bottom: -425px;
-    z-index: 20;
-    background-color: rgba(15, 16, 20, 0.5);
-    border-radius: 50%;
-    padding-left: 10px;
-}
-
 
 .trendingmovies svg {
     fill:red;

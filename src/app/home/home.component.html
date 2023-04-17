@@ -32,13 +32,7 @@
         <path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z"/>
       </svg>
     </button>
-
-    <button class="nextbtn" (click)="nextbtn('movie')" *ngIf="this.indexmovies === 1">
-      <svg  xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
-        <path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z"/>
-      </svg>
-    </button>
-    
+  
     <ul class="list-unstyled"  *ngFor="let trendingmovie of this.trendingmovie; let i = index" >
       <div *ngIf="i <= 9 && this.indexmovies === 1">
         <li>{{trendingmovie.title ? trendingmovie.title : trendingmovie.name}}</li>
@@ -49,11 +43,25 @@
         <img class="img" src="https://image.tmdb.org/t/p/original{{trendingmovie.poster_path}}" alt="Trending Movie Slides">
       </div>
     </ul>
+
+    <button class="nextbtn" (click)="nextbtn('movie')" *ngIf="this.indexmovies === 1">
+      <svg  xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+        <path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z"/>
+      </svg>
+    </button>
   </div>
+
+
 
   <h2>Trending TvShows</h2>
   <div class="trendingmovies">
-  
+    
+    <button class="prevbtn1" (click)="prevbtn('tv')" *ngIf="this.indextv === 2">
+      <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+        <path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z"/>
+      </svg>
+    </button>
+
     <ul class="list-unstyled"  *ngFor="let trendingtv of this.trendingtv; let i = index" >
       <div *ngIf="i <= 9 && this.indextv === 1">
         <li>{{trendingtv.title ? trendingtv.title : trendingtv.name}}</li>
@@ -64,12 +72,6 @@
         <img class="img" src="https://image.tmdb.org/t/p/original{{trendingtv.poster_path}}" alt="Trending Movie Slides">
       </div>
     </ul>
-
-    <button class="prevbtn1" (click)="prevbtn('tv')" *ngIf="this.indextv === 2">
-      <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
-        <path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z"/>
-      </svg>
-    </button>
 
     <button class="nextbtn1" (click)="nextbtn('tv')" *ngIf="this.indextv === 1">
       <svg  xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
