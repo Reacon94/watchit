@@ -3,15 +3,15 @@
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="" class="d-block w-100" alt="Advertisement coming soon">
+        <img src="./assets/img/example1.jpg" class="d-block w-100" alt="Advertisement coming soon">
         <div class="carousel-caption d-none d-md-block">
         </div>
       </div>
-      <div *ngFor="let movie of this.movies" class="carousel-item">
-        <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" class="d-block w-100" alt="...">
+      <div *ngFor="let trending of this.trending" class="carousel-item">
+        <img src="https://image.tmdb.org/t/p/original{{trending.poster_path}}" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>{{movie.title ? movie.title : movie.name}}</h5>
-          <p>{{movie.overview}}</p>
+          <h5>{{trending.title ? trending.title : trending.name}}</h5>
+          <p>{{trending.overview}}</p>
         </div>
       </div>
     </div>
@@ -24,3 +24,58 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+ 
+  <h2>Trending Movies</h2>
+  <div class="trendingmovies">
+    <button class="prevbtn" (click)="prevbtn('movie')" *ngIf="this.indexmovies === 2">
+      <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+        <path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z"/>
+      </svg>
+    </button>
+
+    <button class="nextbtn" (click)="nextbtn('movie')" *ngIf="this.indexmovies === 1">
+      <svg  xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+        <path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z"/>
+      </svg>
+    </button>
+    
+    <ul class="list-unstyled"  *ngFor="let trendingmovie of this.trendingmovie; let i = index" >
+      <div *ngIf="i <= 9 && this.indexmovies === 1">
+        <li>{{trendingmovie.title ? trendingmovie.title : trendingmovie.name}}</li>
+        <img class="img" src="https://image.tmdb.org/t/p/original{{trendingmovie.poster_path}}" alt="Trending Movie Slides">
+      </div>
+      <div *ngIf="i > 9 && this.indexmovies === 2">
+        <li>{{trendingmovie.title ? trendingmovie.title : trendingmovie.name}}</li>
+        <img class="img" src="https://image.tmdb.org/t/p/original{{trendingmovie.poster_path}}" alt="Trending Movie Slides">
+      </div>
+    </ul>
+  </div>
+
+  <h2>Trending TvShows</h2>
+  <div class="trendingmovies">
+  
+    <ul class="list-unstyled"  *ngFor="let trendingtv of this.trendingtv; let i = index" >
+      <div *ngIf="i <= 9 && this.indextv === 1">
+        <li>{{trendingtv.title ? trendingtv.title : trendingtv.name}}</li>
+        <img class="img" src="https://image.tmdb.org/t/p/original{{trendingtv.poster_path}}" alt="Trending Movie Slides">
+      </div>
+      <div *ngIf="i > 9 && this.indextv === 2">
+        <li>{{trendingtv.title ? trendingtv.title : trendingtv.name}}</li>
+        <img class="img" src="https://image.tmdb.org/t/p/original{{trendingtv.poster_path}}" alt="Trending Movie Slides">
+      </div>
+    </ul>
+
+    <button class="prevbtn1" (click)="prevbtn('tv')" *ngIf="this.indextv === 2">
+      <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+        <path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z"/>
+      </svg>
+    </button>
+
+    <button class="nextbtn1" (click)="nextbtn('tv')" *ngIf="this.indextv === 1">
+      <svg  xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+        <path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z"/>
+      </svg>
+    </button>
+    
+  </div>
+

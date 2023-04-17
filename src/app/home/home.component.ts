@@ -8,27 +8,56 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit,DoCheck {
-  movies: any
-  postersrc?: any
+  trending: any
+  trendingmovie: any
+  trendingtv: any
+  indexmovies?: number = 1
+  indextv?: number = 1
+
+
+  
   constructor(private movieapiService: MovieapiService) {
 
   }
 
   ngOnInit(): void {
-    this.movieapiService.getTrending().subscribe((movies:any) => {
-      this.movies = movies.results;
-    }
-     
-     
-     )
+    this.movieapiService.getTrending().subscribe((trending:any) => {
+      this.trending = trending.results;
+    })
+    this.movieapiService.getTrendingMovies().subscribe((trendingmovies:any) => {
+      this.trendingmovie = trendingmovies.results;
+    })
+    this.movieapiService.getTrendingSeries().subscribe((trendingseries:any) => {
+      this.trendingtv = trendingseries.results;
+    })
     
   }
   
   ngDoCheck(): void {
+  }
 
-    console.log(this.movies?.map((x:any) => {
-       return x
-         }))
+  prevbtn(name: string) {
+    if(name === 'movie') {
+      this.indexmovies = 1;
+    }
+
+    if(name === 'tv') {
+      this.indextv = 1;
+    }
+
+   
+  }
+
+  nextbtn(name: string){
+
+    if(name === 'movie') {
+      this.indexmovies = 2;
+    }
+
+    if(name === 'tv') {
+      this.indextv = 2;
+    }
+     
   }
 
 }

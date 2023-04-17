@@ -10,3 +10,75 @@
       left: 0;
       height:600px;
   }
+
+  .trendingmovies{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.trendingmovies .img {
+    width: 200px;
+    margin-right: 10px;
+}
+
+.trendingmovies .img:hover {
+    transform: scale(1.2);
+    transition: transform 0.5s ease-in-out;
+}
+
+.nextbtn{
+    position: absolute;
+    right: 40px;
+    bottom: -40px;
+    z-index: 20;
+    color: white;
+    background-color: rgba(15, 16, 20, 0.5);
+    border-radius: 50%;
+}
+
+.prevbtn{
+    position: absolute;
+    left: 20px;
+    bottom: -40px;
+    z-index: 20;
+    background-color: rgba(15, 16, 20, 0.5);
+    border-radius: 50%;
+}
+
+.prevbtn:hover, .prevbtn1:hover{
+    transform: scale(1.2);
+}
+
+.nextbtn:hover, .nextbtn1:hover {
+    transform: scale(1.2);
+}
+
+.nextbtn1{
+    position:absolute;
+    right: 40px;
+    bottom: -425px;
+    z-index: 20;
+    background-color: rgba(15, 16, 20, 0.5);
+    border-radius: 50%;
+}
+
+.prevbtn1{
+    position: absolute;
+    left: 20px;
+    bottom: -425px;
+    z-index: 20;
+    background-color: rgba(15, 16, 20, 0.5);
+    border-radius: 50%;
+    padding-left: 10px;
+}
+
+
+.trendingmovies svg {
+    fill:red;
+}
+
+.prevbtn svg, .prevbtn1 svg {
+    padding-left: 10px;
+}
+

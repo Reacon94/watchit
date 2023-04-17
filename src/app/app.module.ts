@@ -8,6 +8,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { MoviesComponent } from './movies/movies.component';
 import { SeriesComponent } from './series/series.component';
+import { AboutComponent } from './about/about.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { SeriesComponent } from './series/series.component';
     NavbarComponent,
     MoviesComponent,
     SeriesComponent,
+    AboutComponent,
+    NotfoundComponent,
    
   ],
   imports: [

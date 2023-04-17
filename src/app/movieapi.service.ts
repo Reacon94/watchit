@@ -13,4 +13,12 @@ export class MovieapiService {
   getTrending() {
     return this.http.get("https://api.themoviedb.org/3/trending/all/day?api_key=94de9bebff2637c5a55638a78563f745");
   }
+
+  getTrendingMovies() {
+    return this.http.get("https://api.themoviedb.org/3/movie/popular?api_key=94de9bebff2637c5a55638a78563f745&language=en-US&page=1")
+  }
+
+  getTrendingSeries() {
+    return this.http.get("https://api.themoviedb.org/3/tv/popular?api_key=94de9bebff2637c5a55638a78563f745&language=en-US&page=1")
+  }
 }
