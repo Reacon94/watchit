@@ -10,6 +10,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { SeriesComponent } from './series/series.component';
 import { AboutComponent } from './about/about.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { SinglemovieComponent } from './singlemovie/singlemovie.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
     SeriesComponent,
     AboutComponent,
     NotfoundComponent,
+    SinglemovieComponent,
    
   ],
   imports: [
