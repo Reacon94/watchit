@@ -3,8 +3,9 @@
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="./assets/img/example1.jpg" class="d-block w-100" alt="Advertisement coming soon">
+        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" class="d-block w-100" alt="Advertisement coming soon">
         <div class="carousel-caption d-none d-md-block">
+          <h5>API by TMDB</h5>
         </div>
       </div>
       <div *ngFor="let trending of this.trending" class="carousel-item">
@@ -36,12 +37,12 @@
     <ul class="list-unstyled"  *ngFor="let trendingmovie of this.trendingmovie; let i = index" >
       <div *ngIf="i <= 9 && this.indexmovies === 1">
         <a class="movie" routerLink="/movies/{{trendingmovie.id}}">
-          <li >{{trendingmovie.title ? trendingmovie.title : trendingmovie.name}}</li>
+          <li id="title">{{trendingmovie.title ? trendingmovie.title : trendingmovie.name}}</li>
           <img class="img" src="https://image.tmdb.org/t/p/original{{trendingmovie.poster_path}}" alt="Trending Movie Slides">
         </a>
       </div>
       <div *ngIf="i > 9 && this.indexmovies === 2">
-        <li>{{trendingmovie.title ? trendingmovie.title : trendingmovie.name}}</li>
+        <li id="title">{{trendingmovie.title ? trendingmovie.title : trendingmovie.name}}</li>
         <img class="img" src="https://image.tmdb.org/t/p/original{{trendingmovie.poster_path}}" alt="Trending Movie Slides">
       </div>
     </ul>
@@ -66,12 +67,16 @@
 
     <ul class="list-unstyled"  *ngFor="let trendingtv of this.trendingtv; let i = index" >
       <div *ngIf="i <= 9 && this.indextv === 1">
-        <li>{{trendingtv.title ? trendingtv.title : trendingtv.name}}</li>
-        <img class="img" src="https://image.tmdb.org/t/p/original{{trendingtv.poster_path}}" alt="Trending Movie Slides">
+        <a class="movie" routerLink="/tvshow/{{trendingtv.id}}">
+          <li id="title">{{trendingtv.title ? trendingtv.title : trendingtv.name}}</li>
+          <img class="img" src="https://image.tmdb.org/t/p/original{{trendingtv.poster_path}}" alt="Trending Movie Slides">
+        </a>
       </div>
       <div *ngIf="i > 9 && this.indextv === 2">
-        <li>{{trendingtv.title ? trendingtv.title : trendingtv.name}}</li>
-        <img class="img" src="https://image.tmdb.org/t/p/original{{trendingtv.poster_path}}" alt="Trending Movie Slides">
+        <a class="movie" routerLink="/tvshow/{{trendingtv.id}}">
+          <li id="title">{{trendingtv.title ? trendingtv.title : trendingtv.name}}</li>
+          <img class="img" src="https://image.tmdb.org/t/p/original{{trendingtv.poster_path}}" alt="Trending Movie Slides">
+        </a>
       </div>
     </ul>
 

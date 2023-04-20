@@ -1,7 +1,7 @@
 <div class="h-[90vh] flex justify-center items-center">
       
   <div class="bg-gray-900 rounded-md bg-gray-800 shadow-lg h-[80vh]">
-    <div class="md:flex px-4 leading-none max-w-4xl">
+    <div class="sm:flex px-4 leading-none max-w-4xl">
       <div class="flex-none ">
        <img
         src="https://image.tmdb.org/t/p/original{{actualmovie.poster_path}}"
@@ -15,25 +15,23 @@
         <h2 class="pl-4 pb-10 text-3xl font-bold">{{actualmovie.title}}</h2>
         <hr class="hr-text" data-content="">
         <div class="text-md flex justify-between px-4 my-2">
-          <span class="font-bold">2h 2min | Crime, Drama, Thriller</span>
-          <span class="font-bold"></span>
+          <span class="font-bold ">{{actualmovie.runtime}} minutes</span>
+          <div>
+            <span *ngFor="let genre of actualmovie.genres" class="font-bold pr-2">{{genre.name}}</span>
+          </div>
         </div>
-        <p class="hidden md:block px-4 my-4 text-sm text-left">In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker. </p>
+        <p class="hidden md:block px-4 my-4 text-md text-left leading-7">{{actualmovie.overview}}</p>
         
         <p class="flex text-md px-4 my-2">
-          Rating: 9.0/10 
+          Votes in Average: {{actualmovie.vote_average | number:'1.0-1'}}/10 
         </p>
         
-        <div class="text-xs">
+        <div class="text-xs flex justify-center">
           <button type="button" class="border border-gray-900 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-900 focus:outline-none focus:shadow-outline">
             <a (click)="goToLink()"> Trailer
             </a>
-          </button>
-          
-          <button type="button" class="border border-gray-900 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-900 focus:outline-none focus:shadow-outline">IMDB</button>
-          
+          </button> 
         </div>
-      
       </div>
     </div>
    

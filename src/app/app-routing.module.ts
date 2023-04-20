@@ -6,6 +6,7 @@ import { SeriesComponent } from './series/series.component';
 import { AboutComponent } from './about/about.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SinglemovieComponent } from './singlemovie/singlemovie.component';
+import { SingletvcomponentComponent } from './singletvcomponent/singletvcomponent.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: "movies/:id",
     component:SinglemovieComponent
+  },
+  {
+    path: "tvshow/:id",
+    component: SingletvcomponentComponent
   },
   {
     path: "**",

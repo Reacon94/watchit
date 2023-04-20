@@ -1,8 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient} from '@angular/common/http';
 import { MovieapiService } from '../movieapi.service';
-import { map } from 'rxjs';
+
 
 @Component({
   selector: 'app-singlemovie',
@@ -14,11 +13,11 @@ export class SinglemovieComponent implements OnInit,DoCheck {
   actualmovie?: any
   actualvideo?: any
   videokey: any
+  
 
 
     constructor(
       private route: ActivatedRoute, 
-      private http: HttpClient,
       private moviedb: MovieapiService
       ) {
 
@@ -43,6 +42,8 @@ ngOnInit(): void {
     })
     this.actualvideo = actualvideo
   })
+
+
 
 }
 

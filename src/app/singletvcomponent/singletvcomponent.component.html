@@ -1,0 +1,40 @@
+<div class="h-[90vh] flex justify-center items-center">
+      
+    <div class="bg-gray-900 rounded-md bg-gray-800 shadow-lg h-[80vh] lg: min-w-[600px]">
+      <div class="sm:flex px-4 leading-none max-w-4xl">
+        <div class="flex-none ">
+         <img
+          src="https://image.tmdb.org/t/p/original{{actualtv.poster_path}}"
+          alt="pic"
+          class="h-72 w-56 rounded-md shadow-2xl transform -translate-y-4 border-4 border-gray-300 shadow-lg"
+        />           
+        </div>
+  
+        <div class="flex-col text-white h-[80vh] lg:flex lg:justify-evenly">
+  
+          <h2 class="pl-4 pb-10 text-3xl font-bold">{{actualtv.name}}</h2>
+          <hr class="hr-text" data-content="">
+          <div class="text-md flex justify-between px-4 my-2">
+            <span *ngIf=" actualtv.episode_run_time.length >= 1"  class="font-bold ">{{actualtv.episode_run_time.length >= 1 ? actualtv.episode_run_time : "No Details" }} minutes per Episode</span>
+            <div>
+              <span *ngFor="let genre of actualtv.genres" class="font-bold pr-2">{{genre.name}}</span>
+            </div>
+          </div>
+          <p class="pl-6"> {{actualtv.seasons.length ? actualtv.seasons.length : "/" }} Seasons</p>
+          <p class="hidden md:block px-4 my-4 text-md text-left leading-7">{{actualtv.overview ? actualtv.overview : "/" }}</p>
+          
+          <p class="flex text-md px-4 my-2">
+            Votes in Average: {{actualtv.vote_average | number:'1.0-1'}}/10 
+          </p>
+          
+          <div class="text-xs flex justify-center">
+            <button type="button" class="border border-gray-900 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-900 focus:outline-none focus:shadow-outline">
+              <a (click)="goToLink()"> Trailer
+              </a>
+            </button> 
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
