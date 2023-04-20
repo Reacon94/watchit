@@ -28,7 +28,6 @@ export class SingletvcomponentComponent implements OnInit,DoCheck {
 
   this.moviedb.getVideoTv(this.currentID)
   .subscribe((actualvideo:any) => {
-    console.log(actualvideo)
     actualvideo.results.map((x:any) => {
       this.videokey =  x.key    
     })
@@ -42,9 +41,7 @@ export class SingletvcomponentComponent implements OnInit,DoCheck {
   }
 
   ngDoCheck(): void {
-    console.log(this.actualtv)
-    console.log(this.actualvideo)
-    console.log(this.videokey)
+
   }
 
   goToLink() {

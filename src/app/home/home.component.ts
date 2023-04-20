@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit,DoCheck {
   }
   
   ngDoCheck(): void {
-    console.log(this.trendingtv)
+    
   }
 
   prevbtn(name: string) {

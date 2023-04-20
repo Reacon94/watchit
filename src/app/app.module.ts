@@ -12,7 +12,8 @@ import { AboutComponent } from './about/about.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SinglemovieComponent } from './singlemovie/singlemovie.component';
 import { SingletvcomponentComponent } from './singletvcomponent/singletvcomponent.component';
-
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,13 +26,15 @@ import { SingletvcomponentComponent } from './singletvcomponent/singletvcomponen
     NotfoundComponent,
     SinglemovieComponent,
     SingletvcomponentComponent,
+    SearchbarComponent,
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

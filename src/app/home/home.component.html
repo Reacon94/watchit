@@ -42,8 +42,10 @@
         </a>
       </div>
       <div *ngIf="i > 9 && this.indexmovies === 2">
-        <li id="title">{{trendingmovie.title ? trendingmovie.title : trendingmovie.name}}</li>
-        <img class="img" src="https://image.tmdb.org/t/p/original{{trendingmovie.poster_path}}" alt="Trending Movie Slides">
+        <a class="movie" routerLink="/movies/{{trendingmovie.id}}">
+          <li id="title">{{trendingmovie.title ? trendingmovie.title : trendingmovie.name}}</li>
+          <img class="img" src="https://image.tmdb.org/t/p/original{{trendingmovie.poster_path}}" alt="Trending Movie Slides">
+        </a>
       </div>
     </ul>
 
