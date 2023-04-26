@@ -13,7 +13,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { SinglemovieComponent } from './singlemovie/singlemovie.component';
 import { SingletvcomponentComponent } from './singletvcomponent/singletvcomponent.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
