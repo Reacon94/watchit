@@ -15,6 +15,7 @@ import { SingletvcomponentComponent } from './singletvcomponent/singletvcomponen
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,

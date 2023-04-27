@@ -26,8 +26,9 @@
     </button>
   </div>
  
-  <h2>Trending Movies</h2>
-  <div class="trendingmovies">
+  <h2 class="text-3xl">Trending Movies</h2>
+  <br>
+  <div class="trendingmovies overflow-hidden">
     <button class="prevbtn" (click)="prevbtn('movie')" *ngIf="this.indexmovies === 2">
       <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
         <path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z"/>
@@ -58,8 +59,9 @@
 
 
 
-  <h2>Trending TvShows</h2>
-  <div class="trendingmovies">
+  <h2 class="text-3xl">Trending TvSeries</h2>
+  <br>
+  <div class="trendingmovies overflow-hidden">
     
     <button class="prevbtn1" (click)="prevbtn('tv')" *ngIf="this.indextv === 2">
       <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">

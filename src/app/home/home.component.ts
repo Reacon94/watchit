@@ -22,19 +22,22 @@ export class HomeComponent implements OnInit,DoCheck {
 
   ngOnInit(): void {
     this.movieapiService.getTrending().subscribe((trending:any) => {
-      this.trending = trending.results;
+      this.trending = trending.results.sort((a:any, b:any) => b.popularity - a.popularity);
     })
     this.movieapiService.getTrendingMovies().subscribe((trendingmovies:any) => {
-      this.trendingmovie = trendingmovies.results;
+      this.trendingmovie = trendingmovies.results.sort((a:any, b:any) => b.popularity - a.popularity);
     })
     this.movieapiService.getTrendingSeries().subscribe((trendingseries:any) => {
-      this.trendingtv = trendingseries.results;
+      this.trendingtv = trendingseries.results.sort((a:any, b:any) => b.popularity - a.popularity);
     })
     
   }
   
   ngDoCheck(): void {
-    
+
+    console.log(this.trending,"trending")
+    console.log(this.trendingmovie,"trendingmovie")
+    console.log(this.trendingtv,"trendingseries")
   }
 
   prevbtn(name: string) {

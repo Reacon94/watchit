@@ -1,11 +1,20 @@
- <div class="relative">
-    <input type="text" class="border-2 border-gray-300 bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none text-red-600 font-bold" placeholder="Search..." [(ngModel)]="searchValue" (input)="showResults()">
-    <div class="absolute z-10 w-full mt-2">
+ <div class="">
+    <form class="flex justify-between">
+      <label for="movies"> Movies
+        <input type="radio" name="movies" id="movies" value="movie" [(ngModel)]="selectedOption">
+      </label>
+      <br>
+      <label for="tvshows">Tv Shows
+      <input type="radio" name="movies" id="tvshows" value="tvshow" [(ngModel)]="selectedOption">
+      </label>
+    </form>
+    <input type="text" class="border-2 border-gray-300 bg-white h-10 md:px-10 md:pr-10 rounded-full text-sm focus:outline-none text-red-600 font-bold" placeholder="Search..." [(ngModel)]="searchValue" (input)="showResults()">
+    <div class="absolute z-10 mt-2">
       <div *ngIf="showDropdown" class="border border-gray-300 bg-white rounded-md shadow-lg py-2 px-4">
-        <ng-container *ngIf="searchResults.length > 0; else noResults">
+        <ng-container *ngIf="searchResults.length > 0; else noResults" (click)="stopPropagation($event)">
           <div class="divide-y divide-gray-200 overflow-hidden" *ngFor="let result of this.searchResults">
-            <a class="block py-2 text-sm text-gray-900 hover:bg-gray-200 cursor-pointer">
-              <h2>{{result.title}}</h2>
+            <a *ngIf="loading == false; else spinner" class="block py-2 text-sm text-gray-900 hover:bg-gray-200 cursor-pointer" [routerLink]='(result.title ? ["/movies/",result.id] : ["/tvshow/",result.id])'>
+              <h2 class="font-bold py-2">{{result.title ? result.title : result.name}}</h2>
               <img class="" src="https://image.tmdb.org/t/p/original{{result.poster_path}}" alt="asd">
             </a>
           </div>
@@ -13,7 +22,19 @@
         <ng-template #noResults>
           <div class="py-2 text-sm text-gray-500">No results found.</div>
         </ng-template>
+        <ng-template #spinner>
+          <div class="my-8">
+            <div class="flex justify-center items-center w-full h-screen">
+              <div class="w-16 h-16 border-4 border-turquoise-500 rounded-full animate-spin">
+                <svg class="w-full h-full text-turquoise-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M4.943 19.372A10 10 0 1 1 19.372 4.943M2.59 11.996a1 1 0 0 1 1-1h1.4a1 1 0 0 1 1 1v2.008a1 1 0 0 1-1 1h-1.4a1 1 0 0 1-1-1v-2.008zM17.01 11.996a1 1 0 0 1 1 1v2.008a1 1 0 0 1-1 1h-1.4a1 1 0 0 1-1-1v-2.008a1 1 0 0 1 1-1h1.4zM11.996 2.59a1 1 0 0 1 1 1v1.4a1 1 0 0 1-1 1h-2.008a1 1 0 0 1-1-1v-1.4a1 1 0 0 1 1-1h2.008zM11.996 17.01a1 1 0 0 1-1 1h-2.008a1 1 0 0 1-1-1v-1.4a1 1 0 0 1 1-1h2.008a1 1 0 0 1 1 1v1.4z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>
+
 
