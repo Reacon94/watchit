@@ -11,9 +11,6 @@ export class HomeComponent implements OnInit,DoCheck {
   trending: any
   trendingmovie: any
   trendingtv: any
-  indexmovies?: number = 1
-  indextv?: number = 1
-
 
   
   constructor(private movieapiService: MovieapiService) {
@@ -38,30 +35,21 @@ export class HomeComponent implements OnInit,DoCheck {
     console.log(this.trending,"trending")
     console.log(this.trendingmovie,"trendingmovie")
     console.log(this.trendingtv,"trendingseries")
+    console.log(this.carouselmain)
   }
 
-  prevbtn(name: string) {
-    if(name === 'movie') {
-      this.indexmovies = 1;
-    }
 
-    if(name === 'tv') {
-      this.indextv = 1;
-    }
+  carouselmain = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: '<button type="button" class="slick-next right-0 w-12">Works</button>',
+    //autoplay: true
+  };
 
-   
-  }
-
-  nextbtn(name: string){
-
-    if(name === 'movie') {
-      this.indexmovies = 2;
-    }
-
-    if(name === 'tv') {
-      this.indextv = 2;
-    }
-     
-  }
+  carouselConfig = {
+    slidesToShow: 10,
+    slidesToScroll: 4,
+    nextArrow: '<button type="button" class="slick-next right-0">Works</button>',
+  };
 
 }

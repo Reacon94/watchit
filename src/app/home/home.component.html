@@ -1,94 +1,28 @@
 
 
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" class="d-block w-100" alt="Advertisement coming soon">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>API by TMDB</h5>
-        </div>
+    <ngx-slick-carousel  [config]="carouselmain">
+      <div ngxSlickItem class="flex justify-center my-5" *ngFor="let image of this.trendingmovie">
+        <img class="w-[30vw] object-contain" src="https://image.tmdb.org/t/p/original{{image.poster_path}}" alt="Trending Movie Slides">
       </div>
-      <div *ngFor="let trending of this.trending" class="carousel-item">
-        <img src="https://image.tmdb.org/t/p/original{{trending.poster_path}}" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>{{trending.title ? trending.title : trending.name}}</h5>
-          <p>{{trending.overview}}</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+    </ngx-slick-carousel>
+
  
-  <h2 class="text-3xl">Trending Movies</h2>
-  <br>
-  <div class="trendingmovies overflow-hidden">
-    <button class="prevbtn" (click)="prevbtn('movie')" *ngIf="this.indexmovies === 2">
-      <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
-        <path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z"/>
-      </svg>
-    </button>
+    <ngx-slick-carousel  [config]="carouselConfig">
+      <div ngxSlickItem class="my-5"  *ngFor="let image of this.trendingmovie">
+        <a routerLink="/movies/{{image.id}}">
+          <img src="https://image.tmdb.org/t/p/original{{image.poster_path}}" alt="Trending Movie Slides">
+        </a>
+        <button type="button" class="slick-next">hiiiiiiiiiiiiii</button>
+      </div>
+    
+    </ngx-slick-carousel>
+
+    <ngx-slick-carousel [config]="carouselConfig">
+      <div ngxSlickItem class="my-5" class="slide" *ngFor="let image of this.trendingtv">
+        <a routerLink="/tvshow/{{image.id}}">
+          <img src="https://image.tmdb.org/t/p/original{{image.poster_path}}" alt="Trending Movie Slides">
+        </a>
+      </div>
+    </ngx-slick-carousel>
   
-    <ul class="list-unstyled"  *ngFor="let trendingmovie of this.trendingmovie; let i = index" >
-      <div *ngIf="i <= 9 && this.indexmovies === 1">
-        <a class="movie" routerLink="/movies/{{trendingmovie.id}}">
-          <li id="title">{{trendingmovie.title ? trendingmovie.title : trendingmovie.name}}</li>
-          <img class="img" src="https://image.tmdb.org/t/p/original{{trendingmovie.poster_path}}" alt="Trending Movie Slides">
-        </a>
-      </div>
-      <div *ngIf="i > 9 && this.indexmovies === 2">
-        <a class="movie" routerLink="/movies/{{trendingmovie.id}}">
-          <li id="title">{{trendingmovie.title ? trendingmovie.title : trendingmovie.name}}</li>
-          <img class="img" src="https://image.tmdb.org/t/p/original{{trendingmovie.poster_path}}" alt="Trending Movie Slides">
-        </a>
-      </div>
-    </ul>
-
-    <button class="nextbtn" (click)="nextbtn('movie')" *ngIf="this.indexmovies === 1">
-      <svg  xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
-        <path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z"/>
-      </svg>
-    </button>
-  </div>
-
-
-
-  <h2 class="text-3xl">Trending TvSeries</h2>
-  <br>
-  <div class="trendingmovies overflow-hidden">
-    
-    <button class="prevbtn1" (click)="prevbtn('tv')" *ngIf="this.indextv === 2">
-      <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
-        <path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z"/>
-      </svg>
-    </button>
-
-    <ul class="list-unstyled"  *ngFor="let trendingtv of this.trendingtv; let i = index" >
-      <div *ngIf="i <= 9 && this.indextv === 1">
-        <a class="movie" routerLink="/tvshow/{{trendingtv.id}}">
-          <li id="title">{{trendingtv.title ? trendingtv.title : trendingtv.name}}</li>
-          <img class="img" src="https://image.tmdb.org/t/p/original{{trendingtv.poster_path}}" alt="Trending Movie Slides">
-        </a>
-      </div>
-      <div *ngIf="i > 9 && this.indextv === 2">
-        <a class="movie" routerLink="/tvshow/{{trendingtv.id}}">
-          <li id="title">{{trendingtv.title ? trendingtv.title : trendingtv.name}}</li>
-          <img class="img" src="https://image.tmdb.org/t/p/original{{trendingtv.poster_path}}" alt="Trending Movie Slides">
-        </a>
-      </div>
-    </ul>
-
-    <button class="nextbtn1" (click)="nextbtn('tv')" *ngIf="this.indextv === 1">
-      <svg  xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
-        <path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z"/>
-      </svg>
-    </button>
-    
-  </div>
 
