@@ -47,4 +47,7 @@ export class MovieapiService {
     return this.http.get(`https://api.themoviedb.org/3/search/tv?api_key=94de9bebff2637c5a55638a78563f745&query=${searchterm}`)
   }
 
+  getMovieProvidersGermany(id:any) {
+    return this.http.get(`https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=94de9bebff2637c5a55638a78563f745`)
+  }
 }

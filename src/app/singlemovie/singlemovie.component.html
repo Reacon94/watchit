@@ -28,8 +28,21 @@
           Votes in Average: {{actualmovie.vote_average | number:'1.0-1'}}/10 
         </p>
         
-        <div class="text-xs flex justify-center">
-          <button type="button" class="border border-gray-900 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-900 focus:outline-none focus:shadow-outline">
+        <div class="ml-3 text-xs flex justify-between items-center">
+            <div (mouseenter)="showDiv = true"  class="border p-2 border-gray-200 rounded-md">Where to Buy the Movie?
+              <div class="absolute "  *ngIf="showDiv == true">
+                  <ul class="bg-black w-72 opacity-90 h-72 overflow-auto flex flex-col items-center relative -top-[20rem]" >
+                    <i (click)="showDiv = false" class="relative left-28 cursor-pointer text-xl">X</i>
+                    <li *ngFor="let providers of providers.buy" class="w-28 my-2 ">
+                      <div class="text-white text-xl my-2">{{providers.provider_name}}</div>
+                      <img class="w-12" src="https://www.themoviedb.org/t/p/original/{{providers.logo_path}}" alt="logo">
+                    </li>
+                 </ul>
+              </div>
+          </div>
+
+          <div class="border p-2 border-gray-200 rounded-md">Where to Rent the Movie?</div>
+          <button type="button" class="border border-gray-200 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-900 focus:outline-none focus:shadow-outline">
             <a (click)="goToLink()"> Trailer
             </a>
           </button> 

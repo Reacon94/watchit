@@ -32,10 +32,6 @@ export class HomeComponent implements OnInit,DoCheck {
   
   ngDoCheck(): void {
 
-    console.log(this.trending,"trending")
-    console.log(this.trendingmovie,"trendingmovie")
-    console.log(this.trendingtv,"trendingseries")
-    console.log(this.carouselmain)
   }
 
 

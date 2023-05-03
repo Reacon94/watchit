@@ -13,6 +13,8 @@ export class SinglemovieComponent implements OnInit,DoCheck {
   actualmovie?: any
   actualvideo?: any
   videokey: any
+  providers: any
+  showDiv:boolean = true
   
 
 
@@ -43,6 +45,10 @@ ngOnInit(): void {
     this.actualvideo = actualvideo
   })
 
+  this.moviedb.getMovieProvidersGermany(this.currentID).subscribe((providers:any) => {
+    this.providers = providers.results.DE
+  })
+
 
 
 }
@@ -52,7 +58,7 @@ goToLink() {
 }
 
 ngDoCheck(): void {
- 
+ console.log(this.providers)
 }
 
 }
