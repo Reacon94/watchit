@@ -14,7 +14,8 @@ export class SinglemovieComponent implements OnInit,DoCheck {
   actualvideo?: any
   videokey: any
   providers: any
-  showDiv:boolean = true
+  showBuy:boolean = false
+  showRent:boolean = false
   
 
 

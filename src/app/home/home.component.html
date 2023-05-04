@@ -1,7 +1,7 @@
 
 
     <ngx-slick-carousel  [config]="carouselmain">
-      <div ngxSlickItem class="flex justify-center my-5" *ngFor="let image of this.trendingmovie">
+      <div ngxSlickItem class="flex justify-center my-5" *ngFor="let image of this.trending">
         <img class="w-[30vw] object-contain" src="https://image.tmdb.org/t/p/original{{image.poster_path}}" alt="Trending Movie Slides">
       </div>
     </ngx-slick-carousel>

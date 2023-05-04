@@ -10,9 +10,9 @@
     </form>
     <input type="text" class="border-2 border-gray-300 bg-white h-10 md:px-10 md:pr-10 rounded-full text-sm focus:outline-none text-red-600 font-bold" placeholder="Search..." [(ngModel)]="searchValue" (input)="showResults()">
     <div class="absolute z-10 mt-2">
-      <div *ngIf="showDropdown" class="border border-gray-300 bg-white rounded-md shadow-lg py-2 px-4">
+      <div *ngIf="showDropdown" class="border border-gray-300 bg-white rounded-md shadow-lg py-2 px-4 overflow-auto h-[53em]">
         <ng-container *ngIf="searchResults.length > 0; else noResults" (click)="stopPropagation($event)">
-          <div class="divide-y divide-gray-200 overflow-hidden" *ngFor="let result of this.searchResults">
+          <div class="divide-y divide-gray-200 " *ngFor="let result of this.searchResults">
             <a *ngIf="loading == false; else spinner" class="block py-2 text-sm text-gray-900 hover:bg-gray-200 cursor-pointer" [routerLink]='(result.title ? ["/movies/",result.id] : ["/tvshow/",result.id])'>
               <h2 class="font-bold py-2">{{result.title ? result.title : result.name}}</h2>
               <img class="" src="https://image.tmdb.org/t/p/original{{result.poster_path}}" alt="asd">
