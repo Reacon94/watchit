@@ -1,8 +1,8 @@
-<div class="h-[90vh] flex justify-center items-center overflow-hidden">
+<div class="h-[90vh] flex justify-center items-center flex-col sm:flex-row">
       
   <div class="bg-gray-900 rounded-md bg-gray-800 shadow-lg h-[80vh]">
     <div class="sm:flex px-4 leading-none max-w-4xl">
-      <div class="flex-none ">
+      <div class="sm:flex-none flex justify-center sm:items-start items-center">
        <img
         src="https://image.tmdb.org/t/p/original{{actualmovie.poster_path}}"
         alt="pic"
@@ -29,13 +29,13 @@
         </p>
         
         <div class="ml-3 text-xs flex justify-between items-center">
-            <div (mouseenter)="showBuy = true; showRent = false"  class="border p-2 border-gray-200 rounded-md">Where to Buy the Movie?
-              <div class="absolute max-w-[0px]"  *ngIf="showBuy == true">
-                  <ul class="bg-black w-[39rem] h-[30rem] opacity-90 h-72 overflow-auto flex flex-wrap justify-center items-center relative -top-[32rem]" *ngIf="providers.rent; else notavailable" >
+            <div (mouseenter)="showBuy = true; showRent = false"  class="border p-2 border-gray-200 rounded-md mr-3">Where to Buy the Movie?
+              <div class="absolute"  *ngIf="showBuy == true">
+                  <ul class="bg-black w-[10rem] sm:w-[39rem] h-[30rem] opacity-90 h-72 overflow-auto flex flex-wrap justify-center items-center relative -top-[32rem]" *ngIf="providers.rent; else notavailable" >
                     <i (click)="showBuy = false" class="absolute top-0 right-2 cursor-pointer text-xl">X</i>
-                    <span class="absolute top-0 text-xl mb-5">Buying a Movie</span>
-                    <li *ngFor="let providers of providers.buy" class="w-28 my-2 flex flex-col items-center text-center ">
-                      <div class="text-white text-xl my-2 truncate w-[109px]">{{providers.provider_name}}</div>
+                    <span class="absolute top-0 text-xl mb-5">Buy a Movie</span>
+                    <li *ngFor="let providers of providers.buy" class="w-28 my-2 flex flex-col items-center text-center mt-10">
+                      <div class="text-white text-md my-2 truncate w-[109px]">{{providers.provider_name}}</div>
                       <img class="w-12" src="https://www.themoviedb.org/t/p/original/{{providers.logo_path}}" alt="logo">
                     </li>
                  </ul>
@@ -44,11 +44,11 @@
 
           <div (mouseenter)="showRent = true;showBuy = false"  class="border p-2 border-gray-200 rounded-md">Where to Rent the Movie?
             <div class="absolute"  *ngIf="showRent == true">
-                <ul class="bg-black w-[39rem] h-[30rem] opacity-90  overflow-auto flex flex-wrap justify-center items-center relative -top-[32rem] -left-[16rem]" *ngIf="providers.rent; else notavailable"  >
+                <ul class="bg-black w-[10rem] sm:w-[39rem] h-[30rem] opacity-90  overflow-auto flex flex-wrap justify-center items-center relative -top-[32rem] left-0 sm:-left-[16rem]" *ngIf="providers.rent; else notavailable"  >
                   <i (click)="showRent = false" class="absolute top-0 right-2 cursor-pointer text-xl">X</i>
-                  <span class="absolute top-0 text-xl mb-5">Renting a Movie</span>
-                  <li *ngFor="let providers of providers.rent" class="w-28 my-2 flex flex-col items-center text-center" >
-                      <div class="text-white text-xl my-2 truncate w-[109px] ">{{providers.provider_name}}</div>
+                  <span class="absolute top-0 text-xl mb-5">Rent a Movie</span>
+                  <li *ngFor="let providers of providers.rent" class="w-28 my-2 flex flex-col items-center text-center mt-10" >
+                      <div class="text-white text-md my-2 truncate w-[109px] ">{{providers.provider_name}}</div>
                       <img class="w-12" src="https://www.themoviedb.org/t/p/original/{{providers.logo_path}}" alt="logo">
                   </li>
                </ul>
@@ -60,7 +60,9 @@
           </button> 
 
           <ng-template #notavailable>
-            <span> Sorry, this Movie is at the Moment not in Offer</span>
+            <div class="w-[11em] bg-black relative -top-[90px] px-2 py-2" (mouseleave)="showBuy = false; showRent = false">
+              <span> Sorry, this Movie is at the Moment not in Offer</span>
+            </div>
           </ng-template>
 
         </div>
