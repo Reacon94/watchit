@@ -50,4 +50,9 @@ export class MovieapiService {
   getMovieProvidersGermany(id:any) {
     return this.http.get(`https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=94de9bebff2637c5a55638a78563f745`)
   }
+
+  getTvProvidersGermany(id:any) {
+    return this.http.get(`https://api.themoviedb.org/3/tv/${id}/watch/providers?api_key=94de9bebff2637c5a55638a78563f745`)
+
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, DoCheck, OnDestroy} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { MovieapiService } from '../movieapi.service';
-import { switchMap } from 'rxjs';
+
 
 
 @Component({
@@ -22,7 +22,8 @@ export class SinglemovieComponent implements OnInit,DoCheck,OnDestroy {
 
     constructor(
       private route: ActivatedRoute, 
-      private moviedb: MovieapiService
+      private moviedb: MovieapiService,
+      private router: Router
       ) {
 
     }
@@ -56,7 +57,13 @@ ngOnDestroy(): void {
 }
 
 goToLink() {
-  window.open(`https://www.youtube.com/watch?v=${this.videokey}`)
+  if(this.videokey != undefined) {
+    window.open(`https://www.youtube.com/watch?v=${this.videokey}`)
+  }
+
+  else {
+    this.router.navigate(["/novideofound"])
+  }
 }
 
 ngDoCheck(): void {

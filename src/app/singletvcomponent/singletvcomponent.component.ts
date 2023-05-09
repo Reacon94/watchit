@@ -13,6 +13,9 @@ export class SingletvcomponentComponent implements OnInit,DoCheck {
   actualvideo?: any
   videokey: any
   actualtv: any
+  providers: any
+  showBuy:boolean = false
+  showRent:boolean = false
 
   constructor(  private route: ActivatedRoute, 
     private moviedb: MovieapiService,
@@ -24,6 +27,13 @@ export class SingletvcomponentComponent implements OnInit,DoCheck {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
     this.currentID = params["id"]
+    this.moviedb.getTvById(this.currentID).subscribe((actualtv:any) => {
+      this.actualtv = actualtv
+    })
+    this.moviedb.getTvProvidersGermany(this.currentID).subscribe((providers:any) => {
+      this.providers = providers.results.DE
+    })
+   
   })
 
   this.moviedb.getVideoTv(this.currentID)
@@ -34,14 +44,10 @@ export class SingletvcomponentComponent implements OnInit,DoCheck {
     this.actualvideo = actualvideo
   })
 
-  this.moviedb.getTvById(this.currentID).subscribe((actualtv:any) => {
-    this.actualtv = actualtv
-  })
-
   }
 
   ngDoCheck(): void {
-
+    console.log(this.providers)
   }
 
   goToLink() {

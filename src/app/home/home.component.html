@@ -2,11 +2,15 @@
 
     <ngx-slick-carousel  [config]="carouselmain">
       <div ngxSlickItem class="flex justify-center my-5" *ngFor="let image of this.trending">
-        <img class="w-[30vw] object-contain" src="https://image.tmdb.org/t/p/original{{image.poster_path}}" alt="Trending Movie Slides">
+        <img class="w-[30vw] object-contain min-w-[200px]" src="https://image.tmdb.org/t/p/original{{image.poster_path}}" alt="Trending Movie Slides">
       </div>
     </ngx-slick-carousel>
 
- 
+
+    <h2 class="mb-5 text-3xl">Popular Movies</h2>
+    <div *ngIf="loaded == false" class="flex justify-center items-center">
+      <div class="inline-block animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-red-900"></div>
+    </div>
     <ngx-slick-carousel  [config]="carouselConfig">
       <div ngxSlickItem class="my-5"  *ngFor="let image of this.trendingmovie">
         <a routerLink="/movies/{{image.id}}">
@@ -17,6 +21,10 @@
     
     </ngx-slick-carousel>
 
+    <h2 class="mb-5 text-3xl">Popular TvShows</h2>
+    <div *ngIf="loaded == false" class="flex justify-center items-center">
+      <div class="inline-block animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-red-900"></div>
+    </div>
     <ngx-slick-carousel [config]="carouselConfig">
       <div ngxSlickItem class="my-5" class="slide" *ngFor="let image of this.trendingtv">
         <a routerLink="/tvshow/{{image.id}}">
@@ -24,5 +32,10 @@
         </a>
       </div>
     </ngx-slick-carousel>
+
+    <h2 class="mt-5 text-3xl">API from :</h2>
+    <div class="w-full flex justify-center mt-10">
+      <img class="w-[30vw] object-contain min-w-[200px]" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="">
+    </div>
   
 

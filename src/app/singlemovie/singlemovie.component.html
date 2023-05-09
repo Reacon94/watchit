@@ -1,7 +1,7 @@
-<div class="h-[90vh] flex justify-center items-center flex-col sm:flex-row">
+<div class="h-[90vh] flex justify-center items-center flex-col sm:flex-row mt-[3rem] sm:mt-0">
       
-  <div class="bg-gray-900 rounded-md bg-gray-800 shadow-lg h-[80vh]">
-    <div class="sm:flex px-4 leading-none max-w-4xl">
+  <div class="bg-gray-900 rounded-md bg-gray-800 shadow-lg h-[90vh] sm:h-[80vh]">
+    <div class="sm:flex px-4 leading-none max-w-4xl h-[80vh]">
       <div class="sm:flex-none flex justify-center sm:items-start items-center">
        <img
         src="https://image.tmdb.org/t/p/original{{actualmovie.poster_path}}"
@@ -10,28 +10,28 @@
       />           
       </div>
 
-      <div class="flex-col text-white h-[80vh] lg:flex lg:justify-evenly">
+      <div class="flex-col text-white h-[50vh] sm:h-[80vh] flex justify-evenly">
         <div class="flex justify-center items-center">
           <h2 class="pl-4 pb-10 text-3xl font-bold text-center">{{actualmovie.title}}</h2>
         </div>
         
         <hr class="hr-text" data-content="">
-        <div class="text-md flex justify-between px-4 my-2">
+        <div class="text-md flex justify-between px-4 my-2 ">
           <span class="font-bold ">{{actualmovie.runtime}} minutes</span>
-          <div>
+          <div class="mx-2">
             <span *ngFor="let genre of actualmovie.genres" class="font-bold pr-2">{{genre.name}}</span>
           </div>
         </div>
-        <p class="hidden md:block px-4 my-4 text-md text-left leading-7">{{actualmovie.overview}}</p>
+        <p class="hidden sm:block px-4 my-4 text-md text-left leading-7">{{actualmovie.overview}}</p>
         
         <p class="flex text-md px-4 my-2">
           Votes in Average: {{actualmovie.vote_average | number:'1.0-1'}}/10 
         </p>
         
-        <div class="ml-3 text-xs flex justify-between items-center">
-            <div (mouseenter)="showBuy = true; showRent = false"  class="border p-2 border-gray-200 rounded-md mr-3">Where to Buy the Movie?
+        <div class="ml-3 text-xs flex items-center"  [ngClass]="this.providers ? 'justify-between' : 'justify-center' ">
+            <div (mouseenter)="showBuy = true; showRent = false" *ngIf="this.providers" class="border p-2 border-gray-200 rounded-md mr-3">Where to Buy the Movie?
               <div class="absolute"  *ngIf="showBuy == true">
-                  <ul class="bg-black w-[10rem] sm:w-[39rem] h-[30rem] opacity-90 h-72 overflow-auto flex flex-wrap justify-center items-center relative -top-[32rem]" *ngIf="providers.rent; else notavailable" >
+                  <ul class="bg-black w-[10rem] md:w-[39rem] h-[30rem] opacity-90 h-72 overflow-auto flex flex-wrap justify-center items-center relative -top-[32rem]" *ngIf="providers.rent; else notavailable" >
                     <i (click)="showBuy = false" class="absolute top-0 right-2 cursor-pointer text-xl">X</i>
                     <span class="absolute top-0 text-xl mb-5">Buy a Movie</span>
                     <li *ngFor="let providers of providers.buy" class="w-28 my-2 flex flex-col items-center text-center mt-10">
@@ -42,9 +42,9 @@
               </div>
           </div>
 
-          <div (mouseenter)="showRent = true;showBuy = false"  class="border p-2 border-gray-200 rounded-md">Where to Rent the Movie?
+          <div (mouseenter)="showRent = true;showBuy = false"  *ngIf="this.providers"  class="border p-2 border-gray-200 rounded-md">Where to Rent the Movie?
             <div class="absolute"  *ngIf="showRent == true">
-                <ul class="bg-black w-[10rem] sm:w-[39rem] h-[30rem] opacity-90  overflow-auto flex flex-wrap justify-center items-center relative -top-[32rem] left-0 sm:-left-[16rem]" *ngIf="providers.rent; else notavailable"  >
+                <ul class="bg-black w-[10rem] md:w-[39rem] h-[30rem] opacity-90  overflow-auto flex flex-wrap justify-center items-center relative -top-[32rem] left-0 md:-left-[16rem]" *ngIf="providers.rent; else notavailable"  >
                   <i (click)="showRent = false" class="absolute top-0 right-2 cursor-pointer text-xl">X</i>
                   <span class="absolute top-0 text-xl mb-5">Rent a Movie</span>
                   <li *ngFor="let providers of providers.rent" class="w-28 my-2 flex flex-col items-center text-center mt-10" >

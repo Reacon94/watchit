@@ -22,10 +22,6 @@ const routes: Routes = [
     component: SeriesComponent
   },
   {
-    path: "about",
-    component: AboutComponent
-  },
-  {
     path: "movies/:id",
     component:SinglemovieComponent
   },
