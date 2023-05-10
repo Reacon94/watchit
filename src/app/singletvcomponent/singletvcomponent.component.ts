@@ -10,12 +10,12 @@ import { MovieapiService } from '../movieapi.service';
 })
 export class SingletvcomponentComponent implements OnInit,DoCheck {
   currentID: any 
-  actualvideo?: any
   videokey: any
   actualtv: any
   providers: any
   showBuy:boolean = false
   showRent:boolean = false
+  showFlatrate:boolean = false
 
   constructor(  private route: ActivatedRoute, 
     private moviedb: MovieapiService,
@@ -30,23 +30,28 @@ export class SingletvcomponentComponent implements OnInit,DoCheck {
     this.moviedb.getTvById(this.currentID).subscribe((actualtv:any) => {
       this.actualtv = actualtv
     })
+
+    this.moviedb.getVideoTv(this.currentID)
+    .subscribe((actualvideo:any) => {  
+      actualvideo.results.map((x:any) => {
+          if(x.type == "Trailer"){
+            this.videokey = x.key
+          }
+      
+      })
+      
+    })
+
     this.moviedb.getTvProvidersGermany(this.currentID).subscribe((providers:any) => {
       this.providers = providers.results.DE
     })
-   
-  })
 
-  this.moviedb.getVideoTv(this.currentID)
-  .subscribe((actualvideo:any) => {
-    actualvideo.results.map((x:any) => {
-      this.videokey =  x.key    
-    })
-    this.actualvideo = actualvideo
-  })
+    }) 
 
   }
 
   ngDoCheck(): void {
+    
     console.log(this.providers)
   }
 

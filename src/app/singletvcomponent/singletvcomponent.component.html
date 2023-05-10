@@ -32,11 +32,11 @@
           </p>
           
           <div class="ml-3 text-xs flex items-center" [ngClass]="this.providers ? 'justify-between' : 'justify-center' ">
-            <div (mouseenter)="showBuy = true; showRent = false" *ngIf="this.providers"  class="border p-2 border-gray-200 rounded-md mr-3">Where to Buy the TvShow?
+            <div (mouseenter)="showBuy = true; showRent = false" *ngIf="this.providers.buy"  class="border p-2 border-gray-200 rounded-md mr-3">Where to Buy the TvShow?
               <div class="absolute"  *ngIf="showBuy == true">
-                  <ul class="bg-black w-[10rem] md:w-[39rem] h-[30rem] opacity-90 h-72 overflow-auto flex flex-wrap justify-center items-center relative -top-[32rem]" *ngIf="providers.rent; else notavailable" >
+                  <ul class="bg-black w-[10rem] md:w-[39rem] h-[30rem] opacity-90 h-72 overflow-auto flex flex-wrap justify-center items-center relative -top-[32rem]" *ngIf="providers.buy" >
                     <i (click)="showBuy = false" class="absolute top-0 right-2 cursor-pointer text-xl">X</i>
-                    <span class="absolute top-0 text-xl mb-5">Buy a Movie</span>
+                    <span class="absolute top-0 text-xl mb-5">Buy a TvShow</span>
                     <li *ngFor="let providers of providers.buy" class="w-28 my-2 flex flex-col items-center text-center mt-10">
                       <div class="text-white text-md my-2 truncate w-[109px]">{{providers.provider_name}}</div>
                       <img class="w-12" src="https://www.themoviedb.org/t/p/original/{{providers.logo_path}}" alt="logo">
@@ -45,18 +45,19 @@
               </div>
           </div>
 
-          <div (mouseenter)="showRent = true;showBuy = false" *ngIf="this.providers"  class="border p-2 border-gray-200 rounded-md">Where to Rent the TvShow?
+          <div (mouseenter)="showRent = true;showBuy = false" *ngIf="this.providers.rent"  class="border p-2 border-gray-200 rounded-md cursor-pointer">Where to Rent the TvShow?
             <div class="absolute"  *ngIf="showRent == true">
                 <ul class="bg-black w-[10rem] md:w-[39rem] h-[30rem] opacity-90  overflow-auto flex flex-wrap justify-center items-center relative -top-[32rem] left-0 md:-left-[16rem]" *ngIf="providers.rent; else notavailable"  >
                   <i (click)="showRent = false" class="absolute top-0 right-2 cursor-pointer text-xl">X</i>
-                  <span class="absolute top-0 text-xl mb-5">Rent a Movie</span>
+                  <span class="absolute top-0 text-xl mb-5">Rent a TvShow</span>
                   <li *ngFor="let providers of providers.rent" class="w-28 my-2 flex flex-col items-center text-center mt-10" >
                       <div class="text-white text-md my-2 truncate w-[109px] ">{{providers.provider_name}}</div>
                       <img class="w-12" src="https://www.themoviedb.org/t/p/original/{{providers.logo_path}}" alt="logo">
                   </li>
                </ul>
+              </div>
             </div>
-        </div>
+            
           <button type="button" class="border border-gray-200 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-900 focus:outline-none focus:shadow-outline">
             <a (click)="goToLink()"> Trailer
             </a>
@@ -67,6 +68,7 @@
               <span> Sorry, this Movie is at the Moment not in Offer</span>
             </div>
           </ng-template>
+        
 
         </div>
         </div>

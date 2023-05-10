@@ -12,11 +12,11 @@ import { MovieapiService } from '../movieapi.service';
 export class SinglemovieComponent implements OnInit,DoCheck,OnDestroy {
   currentID: any 
   actualmovie?: any
-  actualvideo?: any
   videokey: any
   providers: any
   showBuy:boolean = false
   showRent:boolean = false
+  showFlatrate:boolean = false
   
 
 
@@ -35,21 +35,24 @@ ngOnInit(): void {
     this.moviedb.getMoviebyID(this.currentID).subscribe((actualmovie:any) => {
       this.actualmovie = actualmovie
     })
-  })
-
-  this.moviedb.getVideoMovie(this.currentID)
-  .subscribe((actualvideo:any) => {
-    actualvideo.results.map((x:any) => {
-        if(x.name == "Official Trailer") {
-          this.videokey =  x.key
-        }
+    
+    this.moviedb.getVideoMovie(this.currentID)
+    .subscribe((actualvideo:any) => {
+      actualvideo.results.map((x:any) => {
+          if(x.name == "Official Trailer" || "Trailer") {
+            this.videokey =  x.key
+          }
+      })
     })
-    this.actualvideo = actualvideo
+  
+    this.moviedb.getMovieProvidersGermany(this.currentID).subscribe((providers:any) => {
+      this.providers = providers.results.DE
+    })
   })
 
-  this.moviedb.getMovieProvidersGermany(this.currentID).subscribe((providers:any) => {
-    this.providers = providers.results.DE
-  })
+
+
+
 }
 
 ngOnDestroy(): void {
@@ -67,6 +70,7 @@ goToLink() {
 }
 
 ngDoCheck(): void {
+  console.log(this.providers)
 }
 
 }
