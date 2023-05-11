@@ -44,10 +44,11 @@ ngOnInit(): void {
           }
       })
     })
-  
-    this.moviedb.getMovieProvidersGermany(this.currentID).subscribe((providers:any) => {
-      this.providers = providers.results.DE
-    })
+      this.moviedb.getMovieProvidersGermany(this.currentID).subscribe((providers:any) => {
+        this.providers = providers.results.DE
+      })
+    
+   
   })
 
 
@@ -70,7 +71,7 @@ goToLink() {
 }
 
 ngDoCheck(): void {
-  console.log(this.providers)
+  console.log(this.actualmovie)
 }
 
 }
