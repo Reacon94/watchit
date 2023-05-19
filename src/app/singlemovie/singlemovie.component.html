@@ -1,9 +1,9 @@
-<div class="flex justify-center items-center flex-col sm:flex-row mt-[3rem] relative top-[6rem] mb-[5rem]">
+<div *ngIf="actualmovie != undefined" class="flex justify-center items-center flex-col sm:flex-row mt-[3rem] relative top-[6rem] mb-[5rem]">
       
   <div class="bg-gray-900 rounded-md shadow-lg">
     <div class="sm:flex px-4 leading-none max-w-4xl min-h-[500px]">
       <div class="sm:flex-none flex justify-center sm:items-start items-center">
-       <img
+       <img 
         src="https://image.tmdb.org/t/p/original{{actualmovie.poster_path}}"
         alt="pic"
         class="h-72 w-56 rounded-md shadow-2xl transform -translate-y-4 border-4 border-gray-300 shadow-lg"
@@ -32,7 +32,7 @@
           Votes in Average: {{actualmovie.vote_average | number:'1.0-1'}}/10 
         </div>
         
-        <div class="ml-3 text-xs flex items-center flex-col sm:flex-row"  [ngClass]="this.providers ? 'justify-between' : 'justify-center' ">
+        <div class="ml-3 text-xs flex items-center flex-col sm:flex-row" *ngIf="providers != undefined"  [ngClass]="this.providers ? 'justify-between' : 'justify-center' ">
             <div (click)="showBuy = !showBuy; showRent = false; showFlatrate = false" *ngIf="this.providers.buy" class="border p-2 m-2 border-gray-200 rounded-md mr-3 w-full cursor-pointer text-center max-w-[200px] hover:bg-red-900">Buying
               <div class="absolute"  *ngIf="showBuy == true">
                   <ul class="bg-black w-[10rem] md:w-[39rem] h-[30rem] opacity-90 h-72 overflow-auto flex flex-wrap justify-center items-center relative -top-[32rem]">

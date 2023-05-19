@@ -38,7 +38,6 @@ ngOnInit(): void {
     this.moviedb.getVideoTv(this.currentID)
     .subscribe((actualvideo:any) => {
       actualvideo.results.map((x:any) => {
-        console.log(x)
         if(x.type == "Trailer"){
           this.videokey = x.key
         }
@@ -46,7 +45,12 @@ ngOnInit(): void {
     })
   
     this.moviedb.getTvProvidersGermany(this.currentID).subscribe((providers:any) => {
-      this.providers = providers.results.DE
+      if(providers.results.DE == undefined) {
+        this.providers = "No Providers"
+      }
+      else {
+        this.providers = providers.results.DE
+      }
     })
   })
 
